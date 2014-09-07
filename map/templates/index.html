@@ -1,0 +1,43 @@
+<html>
+	<head>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="http://yourjavascript.com/7174319415/script.js"></script>
+		<script>
+			$(document).ready(function(){
+				 $('select#selectcountries').change(function () {
+    				 var optionSelected = $(this).find("option:selected");
+    				 var valueSelected  = optionSelected.val();
+     				 var country_name   = optionSelected.text();
+
+
+     				 data = {'cnt' : country_name };
+       				 ajax('/getdetails',data,function(result){
+
+       					 	console.log(result);
+       					 	$("#selectcities option").remove();
+       					 	for (var i = result.length - 1; i >= 0; i--) {
+       					 		$("#selectcities").append('<option>'+ result[i].name +'</option>');
+       					 	};
+
+
+       					 });
+ 				 });
+			});
+		</script>
+	</head>
+
+	<body>
+		<select name="selectcountries" id="selectcountries">
+		{% for item in countries %}
+			<option val="{{ item.name }}"> {{ item.name }} </option>	
+		{% endfor %}
+		</select>	
+		
+
+		<select name ="selectcities" id="selectcities">
+			
+
+		</select>
+		
+	</body>
+</html>

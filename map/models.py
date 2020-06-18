@@ -3,7 +3,7 @@ from django.db import models
 
 class City(models.Model):
     name = models.CharField(max_length=50)
-    country = models.ForeignKey("Country")
+    country = models.ForeignKey("Country", on_delete=models.CASCADE)
 
     def __unicode__(self):
         return u'%s' % (self.name)

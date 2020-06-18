@@ -23,7 +23,7 @@ SECRET_KEY = '8fddnzoi%$f5$8ffd^tk3hsyh_k=vf9a@1ww45hvn-at#x6ubp'
 DEBUG = True
 
 TEMPLATE_DEBUG = True
-TEMPLATE_DIRS = "map/templates/"
+TEMPLATE_DIRS = ("map/templates/",)
 ALLOWED_HOSTS = []
 
 
@@ -39,7 +39,7 @@ INSTALLED_APPS = (
     'map',
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -49,6 +49,22 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'world.urls'
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 WSGI_APPLICATION = 'world.wsgi.application'
 

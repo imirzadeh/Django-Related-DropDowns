@@ -27,7 +27,7 @@ def getdetails(request):
 
     all_cities = selected_country.city_set.all()
     for city in all_cities:
-        print("city name" + str(city.name))
+        print("city name " + str(city.name))
         result_set.append({'name': city.name})
 
     return HttpResponse(simplejson.dumps(result_set), content_type='application/json')
